@@ -1,0 +1,53 @@
+<style>
+  /* Glassmorphic navbar background with blur effect */
+  .nav-glass {
+    /* Semi-transparent dark blue background */
+    background: rgba(36, 51, 84, 0.9);
+    /* Apply blur to the area behind the navbar for glass effect */
+    backdrop-filter: blur(10px);
+  }
+</style>
+
+<!-- Navbar: Fixed-top glassmorphic style -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top nav-glass py-3 shadow">
+  <div class="container">
+    
+    <!-- Brand name on the left side of navbar -->
+    <a class="navbar-brand fw-bold" href="/">SkillSphere</a>
+
+    <!-- Hamburger toggle button shown on small screens to expand/collapse nav menu -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <!-- Hamburger icon -->
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible navigation links container -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto fw-bold"> <!-- Right aligned nav items -->
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="/courses">Courses</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Loop through all nav links inside the navbar
+  document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+    // Compare the href of each link with the current page URL
+    if (link.href === window.location.href) {
+      // If matched, add the 'active' class to highlight the current page link
+      link.classList.add('active');
+    }
+  });
+</script>

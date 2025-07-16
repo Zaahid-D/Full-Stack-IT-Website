@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic HTML metadata -->
+  <meta charset="UTF-8" /> <!-- Character encoding for proper text rendering -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Responsive viewport settings -->
+
+  <!-- Page title shown in browser tab -->
+  <title>SkillSphere | Courses</title>
+
+  <!-- External CSS resources -->
+  <!-- Bootstrap CSS framework for styling -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap icons library -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- AOS animation library -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Internal CSS styles -->
+  <style>
+    /* Base page background color */
+    body {
+      background: #f4f4f9; /* Light gray background */
+    }
+
+    /* Gradient background styling for header section */
+    .gradient-bg {
+      background: linear-gradient(135deg, #243354 0%, #5681bf 30%, #40947e 70%, #52a266 90%);
+      color: white; /* White text for contrast */
+      padding: 5rem 0 4rem; /* Top and bottom padding */
+      animation: fadeInDown 1.5s ease-out;
+    }
+
+    /* Styling for the courses section */
+    .card-section {
+      background-color: #f4f4f9; /* Matching body background */
+      padding-top: 80px; /* Top padding */
+      padding-bottom: 80px; /* Bottom padding */
+    }
+
+    /* Accent color for modal titles and buttons */
+    .accent-blue {
+      color: #5681bf !important; /* Brand blue color */
+    }
+
+    /* Styling for accent buttons */
+    .btn-accent {
+      background-color: #5681bf; /* Brand blue background */
+      color: white; /* White text */
+    }
+    .btn-accent:hover {
+      background-color: #466ca1; /* Darker blue on hover */
+      color: white;
+    }
+
+    /* Smaller icon styling for compact displays */
+    .icon-small {
+      font-size: 1rem; /* Smaller icon size */
+      vertical-align: middle; /* Proper vertical alignment */
+      margin-right: 0.3rem; /* Right margin for spacing */
+    }
+
+    /* Hover animation for cards */
+    .card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Entrance animation for header */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Pulse button animation */
+    .btn-pulse {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation bar inclusion -->
+  {% include 'navbar.html' %}
+
+  <!-- Page header with gradient background -->
+  <section class="gradient-bg text-center">
+    <div class="container" data-aos="zoom-in">
+      <h2 class="display-4 fw-bold mb-3">Our Courses</h2> <!-- Main heading -->
+      <p class="lead fw-bold mb-0">Transform your career with industry-relevant tech education.</p> <!-- Subheading -->
+    </div>
+  </section>
+
+  <!-- Main courses section -->
+  <section class="card-section">
+    <div class="container">
+      <!-- Responsive grid for course cards -->
+      <div class="row g-4" id="courses-container">
+        <!-- Course cards will be dynamically inserted here by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal dialog for course details -->
+  <div class="modal fade" id="courseModal" tabindex="-1" aria-labelledby="courseModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable"> <!-- Large scrollable modal -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- Dynamic modal title with accent color -->
+          <h5 id="modalCourseTitle" class="modal-title accent-blue"></h5>
+          <!-- Close button -->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Course description -->
+          <p id="modalCourseDescription"></p>
+
+          <hr>
+          <!-- Course outline section -->
+          <h6><i class="bi bi-tools me-2"></i>What You'll Learn:</h6>
+          <ul id="modalCourseOutline" class="list-group list-group-flush mb-3"></ul>
+
+          <!-- Prerequisites section -->
+          <h6><i class="bi bi-lightbulb me-2"></i>Prerequisites:</h6>
+          <ul id="modalPrerequisites" class="list-group list-group-flush"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer inclusion -->
+  {% include 'footer.html' %}
+
+  <!-- Bootstrap JavaScript bundle (required for components like modals) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Course data handling and rendering -->
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: true
+    });
+
+    // Wait for DOM to be fully loaded before executing
+    document.addEventListener('DOMContentLoaded', function () {
+      // Fetch course data from API
+      fetch('http://localhost:3000/api/courses')
+        .then(response => response.json()) // Parse JSON response
+        .then(data => {
+          const container = document.getElementById('courses-container');
+
+          // Create a card for each course
+          data.forEach((course, index) => {
+            const col = document.createElement('div');
+            col.className = 'col-md-6 col-lg-4'; // Responsive column sizing
+            col.setAttribute('data-aos', 'fade-up');
+            col.setAttribute('data-aos-delay', index * 100);
+
+            // Course card HTML template
+            col.innerHTML = `
+              <div class="card h-100 shadow-lg border-0 rounded-4 overflow-hidden">
+                <!-- Course image -->
+                <img src="${course.imageUrl}" class="card-img-top" alt="${course.title}" style="height: 200px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
+                  <!-- Course title -->
+                  <h5 class="card-title mb-2 fw-semibold" style="color: #6fc183;">${course.title}</h5>
+
+                  <!-- Course description -->
+                  <p class="card-text text-muted mb-3" style="min-height: 60px;">${course.description}</p>
+
+                  <!-- Course metadata (duration and mode) -->
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="d-flex align-items-center text-success" style="color: #6fc183;">
+                      <i class="bi bi-clock me-1"></i> ${course.duration}
+                    </span>
+                    <span class="d-flex align-items-center text-success" style="color: #6fc183;">
+                      <i class="bi bi-person-workspace me-1"></i> ${course.mode}
+                    </span>
+                  </div>
+
+                  <!-- Learn More button -->
+                  <div class="mt-auto">
+                    <button class="btn w-100 text-white btn-pulse" style="background-color: #5681bf;"
+                      data-bs-toggle="modal" data-bs-target="#courseModal"
+                      onclick='showCourseModal(${JSON.stringify(course)})'>
+                      Learn More
+                    </button>
+                  </div>
+                </div>
+              </div>
+            `;
+
+            // Add course card to container
+            container.appendChild(col);
+          });
+        })
+        .catch(error => console.error('Error fetching courses:', error));
+    });
+
+    // Function to populate and show course details modal
+    function showCourseModal(course) {
+      // Set modal title and description
+      document.getElementById('modalCourseTitle').textContent = course.title;
+      document.getElementById('modalCourseDescription').textContent = course.description;
+
+      // Get reference to outline and prerequisites lists
+      const outlineList = document.getElementById('modalCourseOutline');
+      const prereqList = document.getElementById('modalPrerequisites');
+
+      // Clear any existing content
+      outlineList.innerHTML = '';
+      prereqList.innerHTML = '';
+
+      // Populate course outline if available
+      if (course.courseoutline && course.courseoutline.length) {
+        course.courseoutline.forEach(item => {
+          const li = document.createElement('li');
+          li.className = 'list-group-item';
+          li.textContent = item;
+          outlineList.appendChild(li);
+        });
+      }
+
+      // Populate prerequisites if available
+      if (course.prerequisites && course.prerequisites.length) {
+        course.prerequisites.forEach(item => {
+          const li = document.createElement('li');
+          li.className = 'list-group-item';
+          li.textContent = item;
+          prereqList.appendChild(li);
+        });
+      }
+    }
+  </script>
+
+</body>
+</html>

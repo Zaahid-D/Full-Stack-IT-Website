@@ -1,0 +1,225 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <!-- Document metadata -->
+  <meta charset="UTF-8" /> <!-- Character encoding -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Responsive viewport settings -->
+  
+  <!-- Page title -->
+  <title>SkillSphere | Contact Us</title>
+
+  <!-- External CSS resources -->
+  <!-- Bootstrap CSS framework -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap icons library -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- AOS Animation library CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Internal CSS styles -->
+  <style>
+    /* Base page styling */
+    body {
+      background: #f4f4f9; /* Light gray background */
+    }
+
+    /* Gradient background for header section */
+    .gradient-bg {
+      background: linear-gradient(135deg, #243354 0%, #5681bf 30%, #40947e 70%, #52a266 90%);
+      color: white; /* White text for contrast */
+      padding: 5rem 0 4rem; /* Top and bottom padding */
+    }
+
+    /* Styling for contact information icons */
+    .contact-icon {
+      color: #52a266; /* Brand green color */
+      font-size: 1.5rem; /* Icon size */
+      margin-right: 10px; /* Right margin for spacing */
+      transition: color 0.3s ease;
+    }
+    .contact-icon:hover {
+      color: #3d7a3f; /* Darker green on hover */
+      cursor: default;
+    }
+
+    /* Styling for contact information card */
+    .info-card {
+      background-color: white; /* White background */
+      border-left: 5px solid #52a266; /* Left accent border */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+      padding: 2rem; /* Internal spacing */
+      height: 100%; /* Full height of container */
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .info-card:hover {
+      box-shadow: 0 8px 25px rgba(82, 162, 102, 0.5);
+      transform: translateY(-6px);
+    }
+
+    /* Styling for contact form card */
+    .form-card {
+      background-color: white; /* White background */
+      border-left: 5px solid #52a266; /* Left accent border */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+      padding: 2rem; /* Internal spacing */
+      height: 100%; /* Full height of container */
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .form-card:hover {
+      box-shadow: 0 8px 25px rgba(82, 162, 102, 0.5);
+      transform: translateY(-6px);
+    }
+
+    /* Button with ripple effect */
+    button.btn {
+      position: relative;
+      overflow: hidden;
+      transition: background-color 0.3s ease;
+    }
+    button.btn:focus:not(:active)::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      animation: ripple 0.6s linear forwards;
+      pointer-events: none;
+    }
+    @keyframes ripple {
+      to {
+        transform: translate(-50%, -50%) scale(2.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation bar inclusion -->
+  {% include 'navbar.html' %}
+
+  <!-- Page header section with gradient background -->
+  <section class="gradient-bg text-center" data-aos="fade-down" data-aos-duration="1000">
+    <div class="container">
+      <h2 class="display-4 fw-bold mb-3">Contact Us</h2> <!-- Main heading -->
+      <p class="lead fw-bold mb-0">We'd love to hear from you! Reach out for inquiries, support, or just to say hello.</p> <!-- Subheading -->
+    </div>
+  </section>
+
+  <!-- Main contact content section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-4"> <!-- Responsive row with gutter spacing -->
+        
+        <!-- Contact information column (left side) -->
+        <div class="col-md-5" data-aos="fade-right" data-aos-duration="900" data-aos-delay="200">
+          <div class="card info-card">
+            <h4 class="mb-4">Contact Information</h4> <!-- Section heading -->
+            
+            <!-- Email information with icon -->
+            <p><i class="bi bi-envelope contact-icon"></i><strong>Email Us</strong><br>info@skillsphere.com<br>support@skillsphere.com</p>
+            
+            <!-- Phone information with icon -->
+            <p><i class="bi bi-telephone contact-icon"></i><strong>Call Us</strong><br>+27 (123) 456-7890<br>Mon-Fri: 8am - 5pm</p>
+            
+            <!-- Address information with icon -->
+            <p><i class="bi bi-geo-alt contact-icon"></i><strong>Visit Us</strong><br>123 Tech Park Drive,<br>South Africa</p>
+          </div>
+        </div>
+
+        <!-- Contact form column (right side) -->
+        <div class="col-md-7" data-aos="fade-left" data-aos-duration="900" data-aos-delay="400">
+          <div class="card form-card">
+            <h4 class="mb-4">Send Us a Message</h4> <!-- Form heading -->
+
+            <!-- Success message display (shown when form submission is successful) -->
+            {% if success %}
+              <div class="alert alert-success" role="alert" id="successMessage">
+                Message successfully submitted! We'll get back to you soon.
+              </div>
+            {% endif %}
+
+            <!-- Contact form with validation -->
+            <form action="/submit" method="POST" class="needs-validation" novalidate>
+              <!-- Name input field -->
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+                <div class="invalid-feedback">Please enter your name.</div> <!-- Validation message -->
+              </div>
+              
+              <!-- Email input field -->
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+                <div class="invalid-feedback">Please enter a valid email address.</div> <!-- Validation message -->
+              </div>
+              
+              <!-- Message textarea -->
+              <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="7" required></textarea>
+                <div class="invalid-feedback">Please enter your message.</div> <!-- Validation message -->
+              </div>
+              
+              <!-- Submit button -->
+              <button type="submit" class="btn" style="background-color: #52a266; color: white;">Submit</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JavaScript bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS Animation library JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Initialize AOS -->
+  <script>
+    AOS.init({
+      duration: 900,
+      once: true,
+    });
+  </script>
+
+  <!-- Form validation script -->
+  <script>
+    (function () {
+      'use strict';
+      // Select all forms that need validation
+      const forms = document.querySelectorAll('.needs-validation');
+      
+      // Add validation to each form
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          // Prevent submission if form is invalid
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          // Add validation styling
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+  
+    // Auto-hide success message after 5 seconds
+    const successAlert = document.getElementById('successMessage');
+    if (successAlert) {
+      setTimeout(() => {
+        successAlert.style.display = 'none';
+      }, 5000); // 5000 milliseconds = 5 seconds
+    }
+  </script>
+
+  <!-- Footer inclusion -->
+  {% include 'footer.html' %}
+</body>
+</html>
