@@ -91,6 +91,76 @@
     /* Apply blur to the area behind the navbar for glass effect */
     backdrop-filter: blur(10px);
   }
+
+
+    /* CSS variables for consistent theming */
+  :root {
+    --brightColour: #6fc183; /* Primary accent color used throughout */
+  }
+
+  /* Glassmorphism effect for footer */
+  .footer-glass {
+    background: rgba(36, 51, 84, 0.95) !important; /* Semi-transparent dark blue */
+    backdrop-filter: blur(10px); /* Blur effect for glass-like appearance */
+  }
+
+  /* Footer link styling with hover animations */
+  .footer-glass a.text-white {
+    position: relative; /* Needed for pseudo-element positioning */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  }
+
+  /* Hover state for links */
+  .footer-glass a.text-white:hover,
+  .footer-glass a.text-white:focus {
+    color: var(--brightColour); /* Change to accent color */
+    transform: translateY(-2px); /* Slight upward movement */
+  }
+
+  /* Animated underline effect */
+  .footer-glass a.text-white::after {
+    content: '';
+    position: absolute;
+    width: 0; /* Initially hidden */
+    height: 2px;
+    left: 0;
+    bottom: -3px; /* Position below text */
+    background-color: var(--brightColour); /* Accent color line */
+    transition: width 0.3s ease; /* Animate width expansion */
+    border-radius: 2px; /* Rounded corners */
+  }
+
+  /* Expand underline on hover */
+  .footer-glass a.text-white:hover::after,
+  .footer-glass a.text-white:focus::after {
+    width: 100%; /* Full width underline */
+  }
+
+  /* Social media button styling */
+  .footer-glass .btn-outline-light {
+    transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  /* Social button hover effects */
+  .footer-glass .btn-outline-light:hover,
+  .footer-glass .btn-outline-light:focus {
+    color: var(--brightColour); /* Accent color */
+    box-shadow: 0 0 10px var(--brightColour); /* Glow effect */
+    border-color: var(--brightColour); /* Accent border */
+    background-color: rgba(111, 193, 131, 0.1); /* Light tint */
+    transform: translateY(-3px); /* Lift effect */
+    z-index: 1; /* Ensure it appears above other elements */
+  }
+
+  /* Back-to-top button styling */
+  .footer-glass .btn-primary:hover,
+  .footer-glass .btn-primary:focus {
+    background-color: var(--brightColour); /* Solid accent color */
+    border-color: var(--brightColour); /* Matching border */
+    box-shadow: 0 0 15px var(--brightColour); /* Stronger glow */
+    transform: translateY(-3px); /* Lift effect */
+    transition: all 0.3s ease; /* Smooth transition */
+  }
   </style>
 </head>
 <body>
@@ -188,7 +258,72 @@
   </div>
 
   <!-- Footer inclusion -->
-  {% include 'footer.html' %}
+  
+
+<!-- Footer section with glassmorphism effect -->
+<footer class="footer-glass text-white pt-5 mt-7">
+  <div class="container">
+    <div class="row g-4"> <!-- Responsive grid layout -->
+
+      <!-- Quick Links Column -->
+      <div class="col-md-4">
+        <h4 class="mb-4 text-white">Quick Links</h4>
+        <ul class="list-unstyled"> <!-- Remove default list styling -->
+          <li class="mb-2"><a href="/" class="text-white text-decoration-none">Home</a></li>
+          <li class="mb-2"><a href="/about" class="text-white text-decoration-none">About Us</a></li>
+          <li class="mb-2"><a href="/courses" class="text-white text-decoration-none">Courses</a></li>
+          <li class="mb-2"><a href="/contact" class="text-white text-decoration-none">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Information Column -->
+      <div class="col-md-4">
+        <h4 class="mb-4 text-white">Contact Us</h4>
+        <ul class="list-unstyled">
+          <li class="mb-3">
+            <i class="bi bi-envelope me-2 text-success"></i> <!-- Email icon -->
+            info@skillsphere.com
+          </li>
+          <li class="mb-3">
+            <i class="bi bi-phone me-2 text-success"></i> <!-- Phone icon -->
+            +27 (123) 456-7890
+          </li>
+          <li>
+            <i class="bi bi-geo-alt me-2 text-success"></i> <!-- Location icon -->
+            123 Techno World, SA
+          </li>
+        </ul>
+      </div>
+
+      <!-- Social Media Column -->
+      <div class="col-md-4">
+        <h4 class="mb-4 text-white">Follow Us</h4>
+        <div class="d-flex gap-3"> <!-- Flex layout with spacing -->
+          <!-- Social media buttons with accessibility labels -->
+          <a href="https://www.facebook.com/" class="btn btn-outline-light btn-lg rounded-circle" aria-label="Facebook">
+            <i class="bi bi-facebook"></i>
+          </a>
+          <a href="https://za.linkedin.com/" class="btn btn-outline-light btn-lg rounded-circle" aria-label="LinkedIn">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a href="https://www.instagram.com/" class="btn btn-outline-light btn-lg rounded-circle" aria-label="Instagram">
+            <i class="bi bi-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer bottom section -->
+    <div class="border-top border-white-50 mt-5 pt-4 text-center"> <!-- Top border -->
+      <p class="mb-0">&copy; 2025 SkillSphere. All rights reserved.</p> <!-- Copyright -->
+      <!-- Back-to-top button -->
+      <a href="#" class="btn btn-primary rounded-circle mt-3" aria-label="Back to top">
+        <i class="bi bi-arrow-up"></i> <!-- Up arrow icon -->
+      </a>
+    </div>
+  </div>
+</footer>
 
   <!-- Bootstrap JavaScript bundle (required for components like modals) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
