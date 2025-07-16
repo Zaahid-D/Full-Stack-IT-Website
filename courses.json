@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Web Development",
+    "description": "Master modern web technologies including HTML5, CSS3, JavaScript, React, and Node.js to build responsive, interactive websites.",
+    "duration": "12 Weeks",
+    "mode": "Instructor-led",
+    "courseoutline": [
+      "HTML5 Fundamentals",
+      "CSS3 & Flexbox",
+      "JavaScript ES6+",
+      "React Framework",
+      "Node.js & Express",
+      "REST APIs",
+      "Final Project"
+    ],
+    "prerequisites": [
+      "Basic computer skills",
+      "Understanding of logic flow"
+    ],
+    "imageUrl": "static/images/8.png"
+  },
+  {
+    "title": "Cybersecurity",
+    "description": "Learn to protect systems and networks from digital attacks with hands-on training in ethical hacking and defense strategies.",
+    "duration": "16 Weeks",
+    "mode": "Instructor-led",
+    "courseoutline": [
+      "Network Security",
+      "Ethical Hacking",
+      "Cryptography",
+      "Incident Response",
+      "Cloud Security",
+      "Penetration Testing",
+      "Capstone Project"
+    ],
+    "prerequisites": [
+      "Networking basics",
+      "Operating system knowledge"
+    ],
+    "imageUrl": "static/images/9.png"
+  },
+  {
+    "title": "Data Science",
+    "description": "Unlock insights from data using Python, machine learning, and statistical analysis to drive business decisions.",
+    "duration": "14 Weeks",
+    "mode": "Self-paced",
+    "courseoutline": [
+      "Python for DS",
+      "Pandas & NumPy",
+      "Data Visualization",
+      "Machine Learning",
+      "Big Data Tools",
+      "Real-world Case Studies",
+      "Final Portfolio"
+    ],
+    "prerequisites": [
+      "Basic statistics",
+      "Algebra fundamentals"
+    ],
+    "imageUrl": "static/images/10.png"
+  },
+  {
+    "title": "AI & Machine Learning",
+    "description": "Dive into artificial intelligence and build intelligent systems that can learn and adapt to new information.",
+    "duration": "18 Weeks",
+    "mode": "Instructor-led",
+    "courseoutline": [
+      "Neural Networks",
+      "TensorFlow/PyTorch",
+      "Computer Vision",
+      "NLP",
+      "Reinforcement Learning",
+      "AI Ethics",
+      "Industry Project"
+    ],
+    "prerequisites": [
+      "Python programming",
+      "Linear algebra basics"
+    ],
+    "imageUrl": "static/images/11.png"
+  },
+  {
+    "title": "Cloud Computing",
+    "description": "Master AWS, Azure, and Google Cloud platforms to deploy and manage scalable cloud infrastructure.",
+    "duration": "10 Weeks",
+    "mode": "Self-paced",
+    "courseoutline": [
+      "AWS Fundamentals",
+      "Azure Infrastructure",
+      "Google Cloud",
+      "Containerization",
+      "Serverless Architecture",
+      "Migration Strategies",
+      "Capstone Project"
+    ],
+    "prerequisites": [
+      "Basic networking",
+      "CLI experience"
+    ],
+    "imageUrl": "static/images/12.png"
+  },
+  {
+    "title": "Mobile Development",
+    "description": "Build cross-platform mobile applications using Flutter and React Native with industry best practices.",
+    "duration": "12 Weeks",
+    "mode": "Instructor-led",
+    "courseoutline": [
+      "Flutter Basics",
+      "React Native",
+      "UI/UX for Mobile",
+      "API Integration",
+      "App Publishing",
+      "Performance Optimization",
+      "Store-ready App"
+    ],
+    "prerequisites": [
+      "JavaScript basics",
+      "OOP concepts"
+    ],
+    "imageUrl": "static/images/13.png"
+  }
+]

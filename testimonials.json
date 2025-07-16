@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Zaahid",
+    "course": "Introduction to Web Development",
+    "feedback": "This course gave me the confidence to build my own website from scratch!"
+  },
+  {
+    "id": 2,
+    "name": "Zack",
+    "course": "Python for Data Analysis",
+    "feedback": "I learned so much about data manipulation with pandas. Highly recommend!"
+  },
+  {
+    "id": 3,
+    "name": "Zainab",
+    "course": "UI/UX Design Fundamentals",
+    "feedback": "The design exercises were practical and engaging. Loved it!"
+  },
+  {
+    "id": 4,
+    "name": "Thandi",
+    "course": "Cybersecurity Essentials",
+    "feedback": "Clear explanations and practical labs helped me land an internship in cybersecurity."
+  },
+  {
+    "id": 5,
+    "name": "James",
+    "course": "Full-Stack JavaScript",
+    "feedback": "This course connected all the dots for me as a developer. Excellent structure."
+  },
+  {
+    "id": 6,
+    "name": "Ayesha",
+    "course": "Machine Learning with Python",
+    "feedback": "Finally, a machine learning course that’s hands-on and easy to follow!"
+  },
+  {
+    "id": 7,
+    "name": "Lerato",
+    "course": "Digital Marketing Basics",
+    "feedback": "I applied the strategies I learned here and doubled my small business reach."
+  },
+  {
+    "id": 8,
+    "name": "Matthew",
+    "course": "Data Science Bootcamp",
+    "feedback": "The projects were super helpful in building my portfolio for job hunting."
+  },
+  {
+    "id": 9,
+    "name": "Nomsa",
+    "course": "Mobile App Development",
+    "feedback": "Loved how we built a real app step by step. Great for beginners."
+  },
+  {
+    "id": 10,
+    "name": "Imran",
+    "course": "DevOps Foundations",
+    "feedback": "Very insightful! I now understand the CI/CD pipeline and tools clearly."
+  }
+]
