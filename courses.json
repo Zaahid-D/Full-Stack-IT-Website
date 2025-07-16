@@ -17,7 +17,7 @@
       "Basic computer skills",
       "Understanding of logic flow"
     ],
-    "imageUrl": "static/images/8.png"
+    "imageUrl": "8.png"
   },
   {
     "title": "Cybersecurity",
@@ -37,7 +37,7 @@
       "Networking basics",
       "Operating system knowledge"
     ],
-    "imageUrl": "static/images/9.png"
+    "imageUrl": "9.png"
   },
   {
     "title": "Data Science",
@@ -57,7 +57,7 @@
       "Basic statistics",
       "Algebra fundamentals"
     ],
-    "imageUrl": "static/images/10.png"
+    "imageUrl": "10.png"
   },
   {
     "title": "AI & Machine Learning",
@@ -77,7 +77,7 @@
       "Python programming",
       "Linear algebra basics"
     ],
-    "imageUrl": "static/images/11.png"
+    "imageUrl": "11.png"
   },
   {
     "title": "Cloud Computing",
@@ -97,7 +97,7 @@
       "Basic networking",
       "CLI experience"
     ],
-    "imageUrl": "static/images/12.png"
+    "imageUrl": "12.png"
   },
   {
     "title": "Mobile Development",
@@ -117,6 +117,6 @@
       "JavaScript basics",
       "OOP concepts"
     ],
-    "imageUrl": "static/images/13.png"
+    "imageUrl": "13.png"
   }
 ]
