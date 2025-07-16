@@ -81,12 +81,133 @@
       transform: scale(1.2) rotate(5deg);
       color: #ffffffcc;
     }
+
+    /* Glassmorphic navbar background with blur effect */
+  .nav-glass {
+    /* Semi-transparent dark blue background */
+    background: rgba(36, 51, 84, 0.9);
+    /* Apply blur to the area behind the navbar for glass effect */
+    backdrop-filter: blur(10px);
+  }
+
+
+      /* CSS variables for consistent theming */
+  :root {
+    --brightColour: #6fc183; /* Primary accent color used throughout */
+  }
+
+  /* Glassmorphism effect for footer */
+  .footer-glass {
+    background: rgba(36, 51, 84, 0.95) !important; /* Semi-transparent dark blue */
+    backdrop-filter: blur(10px); /* Blur effect for glass-like appearance */
+  }
+
+  /* Footer link styling with hover animations */
+  .footer-glass a.text-white {
+    position: relative; /* Needed for pseudo-element positioning */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  }
+
+  /* Hover state for links */
+  .footer-glass a.text-white:hover,
+  .footer-glass a.text-white:focus {
+    color: var(--brightColour); /* Change to accent color */
+    transform: translateY(-2px); /* Slight upward movement */
+  }
+
+  /* Animated underline effect */
+  .footer-glass a.text-white::after {
+    content: '';
+    position: absolute;
+    width: 0; /* Initially hidden */
+    height: 2px;
+    left: 0;
+    bottom: -3px; /* Position below text */
+    background-color: var(--brightColour); /* Accent color line */
+    transition: width 0.3s ease; /* Animate width expansion */
+    border-radius: 2px; /* Rounded corners */
+  }
+
+  /* Expand underline on hover */
+  .footer-glass a.text-white:hover::after,
+  .footer-glass a.text-white:focus::after {
+    width: 100%; /* Full width underline */
+  }
+
+  /* Social media button styling */
+  .footer-glass .btn-outline-light {
+    transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  /* Social button hover effects */
+  .footer-glass .btn-outline-light:hover,
+  .footer-glass .btn-outline-light:focus {
+    color: var(--brightColour); /* Accent color */
+    box-shadow: 0 0 10px var(--brightColour); /* Glow effect */
+    border-color: var(--brightColour); /* Accent border */
+    background-color: rgba(111, 193, 131, 0.1); /* Light tint */
+    transform: translateY(-3px); /* Lift effect */
+    z-index: 1; /* Ensure it appears above other elements */
+  }
+
+  /* Back-to-top button styling */
+  .footer-glass .btn-primary:hover,
+  .footer-glass .btn-primary:focus {
+    background-color: var(--brightColour); /* Solid accent color */
+    border-color: var(--brightColour); /* Matching border */
+    box-shadow: 0 0 15px var(--brightColour); /* Stronger glow */
+    transform: translateY(-3px); /* Lift effect */
+    transition: all 0.3s ease; /* Smooth transition */
+  }
   </style>
 </head>
 <body>
   
   <!-- Navigation bar component -->
-  {% include 'navbar.html' %}
+  
+<!-- Navbar: Fixed-top glassmorphic style -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top nav-glass py-3 shadow">
+  <div class="container">
+    
+    <!-- Brand name on the left side of navbar -->
+    <a class="navbar-brand fw-bold" href="/">SkillSphere</a>
+
+    <!-- Hamburger toggle button shown on small screens to expand/collapse nav menu -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <!-- Hamburger icon -->
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible navigation links container -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto fw-bold"> <!-- Right aligned nav items -->
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="/courses">Courses</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Loop through all nav links inside the navbar
+  document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+    // Compare the href of each link with the current page URL
+    if (link.href === window.location.href) {
+      // If matched, add the 'active' class to highlight the current page link
+      link.classList.add('active');
+    }
+  });
+</script>
 
   <!-- Hero section with main heading -->
   <header class="d-flex align-items-center text-white" style="height: 60vh;">
@@ -158,76 +279,7 @@
   </section>
 
   <!-- Footer component -->
-  <style>
-  /* CSS variables for consistent theming */
-  :root {
-    --brightColour: #6fc183; /* Primary accent color used throughout */
-  }
-
-  /* Glassmorphism effect for footer */
-  .footer-glass {
-    background: rgba(36, 51, 84, 0.95) !important; /* Semi-transparent dark blue */
-    backdrop-filter: blur(10px); /* Blur effect for glass-like appearance */
-  }
-
-  /* Footer link styling with hover animations */
-  .footer-glass a.text-white {
-    position: relative; /* Needed for pseudo-element positioning */
-    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
-  }
-
-  /* Hover state for links */
-  .footer-glass a.text-white:hover,
-  .footer-glass a.text-white:focus {
-    color: var(--brightColour); /* Change to accent color */
-    transform: translateY(-2px); /* Slight upward movement */
-  }
-
-  /* Animated underline effect */
-  .footer-glass a.text-white::after {
-    content: '';
-    position: absolute;
-    width: 0; /* Initially hidden */
-    height: 2px;
-    left: 0;
-    bottom: -3px; /* Position below text */
-    background-color: var(--brightColour); /* Accent color line */
-    transition: width 0.3s ease; /* Animate width expansion */
-    border-radius: 2px; /* Rounded corners */
-  }
-
-  /* Expand underline on hover */
-  .footer-glass a.text-white:hover::after,
-  .footer-glass a.text-white:focus::after {
-    width: 100%; /* Full width underline */
-  }
-
-  /* Social media button styling */
-  .footer-glass .btn-outline-light {
-    transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-  }
-
-  /* Social button hover effects */
-  .footer-glass .btn-outline-light:hover,
-  .footer-glass .btn-outline-light:focus {
-    color: var(--brightColour); /* Accent color */
-    box-shadow: 0 0 10px var(--brightColour); /* Glow effect */
-    border-color: var(--brightColour); /* Accent border */
-    background-color: rgba(111, 193, 131, 0.1); /* Light tint */
-    transform: translateY(-3px); /* Lift effect */
-    z-index: 1; /* Ensure it appears above other elements */
-  }
-
-  /* Back-to-top button styling */
-  .footer-glass .btn-primary:hover,
-  .footer-glass .btn-primary:focus {
-    background-color: var(--brightColour); /* Solid accent color */
-    border-color: var(--brightColour); /* Matching border */
-    box-shadow: 0 0 15px var(--brightColour); /* Stronger glow */
-    transform: translateY(-3px); /* Lift effect */
-    transition: all 0.3s ease; /* Smooth transition */
-  }
-</style>
+  
 
 <!-- Footer section with glassmorphism effect -->
 <footer class="footer-glass text-white pt-5 mt-7">
